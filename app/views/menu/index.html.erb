@@ -1,13 +1,39 @@
 <h1>Menu#index</h1>
-<ul class="nav nav-pills">
+
+<form class="form-inline">
+  <div class="form-group">
+   <ul class="nav nav-pills">
   <% @sections.each do |section| %>
     <li class="nav-item">
       <%= link_to section, menu_path(section: section), class: "nav-link #{params[:section] == section && 'active'}" %>
   <% end %>
     </li>
 </ul>
+  </div>
+  <div class="form-group">
+    <div class="btn-group">
+  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action
+  </button>
+  <div class="dropdown-menu">
+      <% @sections.each do |section| %>
+    <%=link_to "#{section} Sort By",menu_path(:sort_param => "name",section: section),class: "dropdown-item"%>
+    <%end%>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div>
+    <form class="form-inline pull-xs-right">
+      <input class="form-control" type="text" placeholder="Search">
+      <button class="btn btn-success-outline" type="submit">Search</button>
+    </form>
+    </div>
+</form>
+
+
+
 <% @food_items.each do |item|%>
-<div class="card">
+<div class="card" style="margin-top:50px">
   <div class="card-block">
     <%= item.name%>
   </div>
@@ -16,3 +42,8 @@
   </div>
 </div>
 <% end %>
+
+
+<script>
+$('.dropdown-toggle').dropdown()
+</script>

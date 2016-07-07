@@ -9,4 +9,5 @@ class FoodItem < ApplicationRecord
   def self.filter_by_section(section)
     where("Section Like ?", "%#{section}%")
   end
+
 end
