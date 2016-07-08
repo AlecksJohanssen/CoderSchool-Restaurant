@@ -22,7 +22,7 @@
         </li>
       </ul>
     <form class="form-inline pull-xs-right">
-      <input class="form-control" type="text" placeholder="Search">
+      <%= text_field_tag :search, params[:search], class: "form-control",placeholder: "Search" %>
       <button class="btn btn-success-outline" type="submit">Search</button>
     </form>
   </nav>

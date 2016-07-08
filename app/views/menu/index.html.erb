@@ -19,6 +19,7 @@
       <% @sections.each do |section| %>
     <%=link_to "#{section} Sort By",menu_path(:sort_param => "name",section: section),class: "dropdown-item"%>
     <%end%>
+    <%=link_to "Sort by Highest Price",menu_path(:decimal_param => "price"),class: "dropdown-item"%>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="#">Separated link</a>
   </div>
@@ -30,12 +31,11 @@
     </div>
 </form>
 
-
-
 <% @food_items.each do |item|%>
 <div class="card" style="margin-top:50px">
   <div class="card-block">
-    <%= item.name%>
+    <%= link_to item.name, food_item_path(item), class: 'btn btn-default' %>
+    <%= item.price%>
   </div>
   <div class="card-block">
     <%= image_tag item.image_url_or_auto%>
