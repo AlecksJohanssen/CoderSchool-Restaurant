@@ -1,5 +1,6 @@
 class Impressions < ActiveRecord::Base
-  belongs_to :impressionable, :polymorphic=>true
+  belongs_to :impressionable, :polymorphic=>true, counter_cache: :impressions_count
+  is_impressionable :counter_cache => true, :column_name => :viewcount
 end
 
 class CreateImpressionsTable < ActiveRecord::Migration

@@ -1,13 +1,13 @@
 class FoodItemsController < ApplicationController
   before_action :set_food_item, only: [:show, :edit, :update, :destroy]
-before_filter :log_impression, :only=> [:show]
+  before_filter :log_impression, :only=> [:show]
 
 
   # GET /food_items
   # GET /food_items.json
   def index
     @food_items = FoodItem.all
-FoodItem.order(visitors: :asc)
+
   end
 
   # GET /food_items/1
@@ -17,7 +17,7 @@ FoodItem.order(visitors: :asc)
 def log_impression
   @food_item = FoodItem.find(params[:id])
   # this assumes you have a current_user method in your authentication system
-  @food_item.impressions.create(ip_address: request.remote_ip)
+  @food_item.impressions.create(ip_address: request.remote_ip )
 end
 
   # GET /food_items/new
@@ -77,6 +77,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_item_params
-      params.require(:food_item).permit(:name, :description, :price, :section, :image_url)
+      params.require(:food_item).permit(:name, :description, :price, :section, :image_url, :cuisine)
     end
 end

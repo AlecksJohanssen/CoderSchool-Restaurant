@@ -1,7 +1,7 @@
 class FoodItem < ApplicationRecord
   has_many :order_food_items
   has_many :impressions, :as=>:impressionable
-
+ratyrate_rateable 'visual_effects', 'original_score', 'director', 'custome_design'
   def image_url_or_auto
     if image_url.present?
       image_url
@@ -20,11 +20,7 @@ class FoodItem < ApplicationRecord
   def self.search(query)
     where("name like ?", "%#{query}%")
   end
-def impression_count
+def impressions_count
     impressions.size
-  end
-
-  def unique_impression_count
-    impressions.group(:ip_address).size #UNTESTED: might not be correct syntax
   end
 end

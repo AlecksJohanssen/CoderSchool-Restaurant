@@ -1,5 +1,6 @@
 
   Rails.application.routes.draw do
+  devise_for :users
   resources :orders
   resources :food_items
     resources :order

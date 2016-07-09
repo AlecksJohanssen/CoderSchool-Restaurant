@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track" => false %>
 <div class="wrap">
 
 <div class="card">
@@ -15,13 +16,37 @@
            </span>
     <p class="card-text" style="text-align:center"><%= @food_item.description %></p>
     <p class="card-text" style="text-align:center"><%= @food_item.price %></p>
+    <p class="card-text" style="text-align:center"><%= @food_item.cuisine %></p>
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
   </div>
 </div>
 
-
-
+<div class="row">
+  <div class="small-2 large-2 columns" style="margin-left:50px">
+    <%= imdb_style_rating_for @food_item, current_user%>
+  </div>
+  <br>
+  <div class="small-2 large-4 columns" style="margin-left:50px">
+  <% if current_user %>
+    <%= rating_for @food_item, "visual_effects", enable_half: true %>
+      <br>
+      Original Score: <%= rating_for @food_item, "original_score" %>
+      <br>
+      Director: <%= rating_for @food_item, "original_score" %>
+      <br>
+      Custome Design: <%= rating_for @food_item, "custome_design" %>
+    <%else%>
+    <%= rating_for @food_item, "visual_effects", enable_half: true %>
+      <br>
+      Original Score: <%= rating_for @food_item, "original_score" %>
+      <br>
+      Director: <%= rating_for @food_item, "original_score" %>
+      <br>
+      Custome Design: <%= rating_for @food_item, "custome_design" %>
+    <% end %>
+  </div>
+</div>
 <%= link_to 'Edit', edit_food_item_path(@food_item) %> |
 <%= link_to 'Back', food_items_path %>
 

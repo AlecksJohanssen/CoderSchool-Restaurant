@@ -1,5 +1,5 @@
 <h1>Menu#index</h1>
-
+<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track" => false %>
 <form class="form-inline">
   <div class="form-group">
    <ul class="nav nav-pills">
@@ -20,8 +20,8 @@
     <%=link_to "#{section} Sort By",menu_path(:sort_param => "name",section: section),class: "dropdown-item"%>
     <%end%>
     <% ['price'].each do |column| %>
-    <%=link_to "Sort by #{column} DESC",menu_path(:sort_param => "price DESC"),class: "dropdown-item"%>
-    <%=link_to "Sort by #{column} ASC",menu_path(:sort_param => "price ASC"),class: "dropdown-item"%>
+    <%=link_to "Sort by #{column} ASC",menu_path(:sort_param => "price DESC"),class: "dropdown-item"%>
+    <%=link_to "Sort by #{column} DESC",menu_path(:sort_param => "price ASC"),class: "dropdown-item"%>
     <%end%>
     <div class="dropdown-divider"></div>
      <% @cuisines.each do |cuisine| %>
@@ -40,7 +40,11 @@
 <div class="card" style="margin-top:50px">
   <div class="card-block">
     <%= link_to item.name, food_item_path(item), class: 'btn btn-default' %>
-    <%= item.price%>
+    <%= number_to_currency item.price%>
+    <%= item.cuisine %>
+    <span class="label label-info total-count">
+      View Counts:<%= item.impressions_count %>
+           </span>
     <%= link_to 'Order Now', new_order_path(id: item.id), class: 'btn btn-primary' %>
   </div>
   <div class="card-block">

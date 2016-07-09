@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
-    @selected_food_item = FoodItem.find_by_id(params[:id])
   end
 
   # GET /orders/1
@@ -17,12 +16,12 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-    @selected_food_item = FoodItem.find_by_id(params[:id])
+
   end
 
   # GET /orders/1/edit
   def edit
-     @selected_food_item = @order.food_items.first
+@selected_food_item = @order.food_items.first
   end
 
   # POST /orders
