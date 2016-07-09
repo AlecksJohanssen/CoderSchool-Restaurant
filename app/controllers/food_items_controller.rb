@@ -2,10 +2,12 @@ class FoodItemsController < ApplicationController
   before_action :set_food_item, only: [:show, :edit, :update, :destroy]
 before_filter :log_impression, :only=> [:show]
 
+
   # GET /food_items
   # GET /food_items.json
   def index
     @food_items = FoodItem.all
+FoodItem.order(visitors: :asc)
   end
 
   # GET /food_items/1

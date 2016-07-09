@@ -2,7 +2,6 @@ class FoodItem < ApplicationRecord
   has_many :order_food_items
   has_many :impressions, :as=>:impressionable
 
-
   def image_url_or_auto
     if image_url.present?
       image_url

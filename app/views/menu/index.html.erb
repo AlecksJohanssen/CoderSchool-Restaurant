@@ -18,11 +18,14 @@
   <div class="dropdown-menu">
     <% @sections.each do |section| %>
     <%=link_to "#{section} Sort By",menu_path(:sort_param => "name",section: section),class: "dropdown-item"%>
-    <%=link_to "Sort by Highest Price",menu_path(:decimal_param => "price"),class: "dropdown-item"%>
+    <%end%>
+    <% ['price'].each do |column| %>
+    <%=link_to "Sort by #{column} DESC",menu_path(:sort_param => "price DESC"),class: "dropdown-item"%>
+    <%=link_to "Sort by #{column} ASC",menu_path(:sort_param => "price ASC"),class: "dropdown-item"%>
+    <%end%>
     <div class="dropdown-divider"></div>
      <% @cuisines.each do |cuisine| %>
     <a class="dropdown-item" href="#"><%= link_to cuisine,menu_path(cuisine: cuisine) %></a>
-    <%end%>
     <%end%>
   </div>
 </div>

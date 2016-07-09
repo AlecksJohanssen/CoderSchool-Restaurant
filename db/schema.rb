@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160709053505) do
     t.integer  "impressionable_id"
     t.integer  "user_id"
     t.string   "controller_name"
+    t.integer  "visitors",            default: 0
     t.string   "action_name"
     t.string   "view_name"
     t.string   "request_hash"
