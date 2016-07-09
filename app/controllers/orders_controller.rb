@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
-    @selected_food_item = FoodItem.find_by_id(params[:id])
+     @selected_food_item = @order.food_items.first
   end
 
   # POST /orders

@@ -1,5 +1,6 @@
 class FoodItemsController < ApplicationController
   before_action :set_food_item, only: [:show, :edit, :update, :destroy]
+before_filter :log_impression, :only=> [:show]
 
   # GET /food_items
   # GET /food_items.json
@@ -11,6 +12,11 @@ class FoodItemsController < ApplicationController
   # GET /food_items/1.json
   def show
   end
+def log_impression
+  @food_item = FoodItem.find(params[:id])
+  # this assumes you have a current_user method in your authentication system
+  @food_item.impressions.create(ip_address: request.remote_ip)
+end
 
   # GET /food_items/new
   def new
