@@ -1,0 +1,53 @@
+
+
+<%= form_for(order) do |f| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.hidden_field :food_item_id, :value => @selected_food_item.id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+<div class="col-md-4" id="sidebar" style="float: right">
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title" style="text-align:center"><%= @selected_food_item.name %></h4>
+  </div>
+  <%=  image_tag @selected_food_item.image_url_or_auto %>
+  <div class="card-block">
+    <p class="card-text" style="text-align:center"><%= @selected_food_item.description %></p>
+    <p class="card-text" style="text-align:center"><%= @selected_food_item.price %></p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+</div>

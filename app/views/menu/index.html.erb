@@ -36,6 +36,7 @@
   <div class="card-block">
     <%= link_to item.name, food_item_path(item), class: 'btn btn-default' %>
     <%= item.price%>
+    <%= link_to 'Order Now', new_order_path(id: item.id), class: 'btn btn-primary' %>
   </div>
   <div class="card-block">
     <%= image_tag item.image_url_or_auto%>

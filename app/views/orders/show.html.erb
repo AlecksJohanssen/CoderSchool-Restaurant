@@ -1,0 +1,20 @@
+<h1>Thank you for Ordering at CoderSchool Restaurant</h1>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+<div class="wrap">
+
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title" style="text-align:center">   <strong>Username:</strong> <%= @order.username %></h4>
+  </div>
+  <div class="card-block">
+    <p class="card-text" style="text-align:center">  <strong>Phone Number:</strong><%= @order.phone_number %></p>
+    <p class="card-text" style="text-align:center">  <strong>Address:</strong><%= @order.address %></p>
+    <p class="card-text" style="text-align:center"><%= @selected_food_item.name %></p>
+
+  </div>
+</div>
+
+</div>
+
