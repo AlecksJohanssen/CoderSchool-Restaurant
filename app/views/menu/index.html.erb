@@ -16,12 +16,14 @@
     Action
   </button>
   <div class="dropdown-menu">
-      <% @sections.each do |section| %>
+    <% @sections.each do |section| %>
     <%=link_to "#{section} Sort By",menu_path(:sort_param => "name",section: section),class: "dropdown-item"%>
-    <%end%>
     <%=link_to "Sort by Highest Price",menu_path(:decimal_param => "price"),class: "dropdown-item"%>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
+     <% @cuisines.each do |cuisine| %>
+    <a class="dropdown-item" href="#"><%= link_to cuisine,menu_path(cuisine: cuisine) %></a>
+    <%end%>
+    <%end%>
   </div>
 </div>
     <form class="form-inline pull-xs-right">
@@ -43,6 +45,7 @@
   </div>
 </div>
 <% end %>
+\\
 
 
 <script>

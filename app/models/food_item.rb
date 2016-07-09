@@ -10,6 +10,9 @@ class FoodItem < ApplicationRecord
     end
   end
 
+  def self.filter_by_cuisine(cuisine)
+    where("cuisine like ?", "%#{cuisine}%")
+  end
   def self.filter_by_section(section)
     where("Section Like ?", "%#{section}%")
   end
@@ -17,4 +20,5 @@ class FoodItem < ApplicationRecord
   def self.search(query)
     where("name like ?", "%#{query}%")
   end
+
 end
