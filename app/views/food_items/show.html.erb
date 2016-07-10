@@ -15,7 +15,9 @@
       View Counts:<%=@food_item.impressions.count %>
            </span>
     <p class="card-text" style="text-align:center"><%= @food_item.description %></p>
-    <p class="card-text" style="text-align:center"><%= @food_item.price %></p>
+    <p class="card-text" style="text-align:center"><span class="label label-info total-count">
+              <%= number_to_currency @food_item.price %>
+             </span></p>
     <p class="card-text" style="text-align:center"><%= @food_item.cuisine %></p>
   </div>
 </div>
