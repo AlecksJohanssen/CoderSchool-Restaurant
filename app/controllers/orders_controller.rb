@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.create(order_params)
+    @order = Order.create!(order_params)
     @order.order_food_items.create(quantity: 1, food_item_id: params[:order][:food_item_id])
     respond_to do |format|
       if @order.save
