@@ -1,5 +1,4 @@
 <h1>Menu</h1>
-<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track" => false %>
 <form class="form-inline">
   <div class="form-group">
    <ul class="nav nav-pills">
@@ -55,8 +54,8 @@
            </span>
          <%= link_to 'Order Now', new_order_path(id: item.id), class: 'btn btn-primary' %>
         </div>
+    </div>
 
-      </div>
 
 <% end %>
 

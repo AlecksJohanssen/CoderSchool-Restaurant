@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
   # GET /orders
   # GET /orders.json
   def index
@@ -16,7 +15,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
-
+    @selected_food_item = FoodItem.find_by_id(params[:id])
   end
 
   # GET /orders/1/edit
@@ -29,7 +28,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.create(order_params)
     @order.order_food_items.create(quantity: 1, food_item_id: params[:order][:food_item_id])
-
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }

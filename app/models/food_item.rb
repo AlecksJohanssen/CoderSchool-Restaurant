@@ -1,6 +1,10 @@
 class FoodItem < ApplicationRecord
   has_many :order_food_items
   has_many :impressions, :as=>:impressionable
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :price, presence: true, numericality: { only_integer: true }
+
   def image_url_or_auto
     if image_url.present?
       image_url
