@@ -34,30 +34,34 @@
     </form>
     </div>
 </form>
-<% @food_items.each do |item|%>
-<div class="card-deck-wrapper">
-  <div class="card-deck">
-    <div class="card">
-      <%= image_tag item.image_url_or_auto%>
-      <div class="card-block">
-        <h4 class="card-title"><%= link_to item.name, food_item_path(item)%></h4>
-        <p class="card-text"><%= item.description %></p>
-        <p class="card-text">
-          <span class="label label-info total-count">
-            View Counts:<%= item.impressions_count %>
-           </span>
-        </p>
+  <div class="card-deck-wrapper">
+    <% @food_items.in_groups_of(3, false) do |row| %>
+    <div class="card-deck">
+    <% row.each do |food_item| %>
+      <div class="card">
+      <%= image_tag food_item.image_url_or_auto%>
+        <div class="card-block">
+          <h4 class="card-title"><%= link_to food_item.name, food_item_path(food_item)%></h4>
+          <p class="card-text"><%= food_item.description %></p>
+          <p class="card-text">
+            <span class="label label-info total-count">
+              View Counts:<%= food_item.impressions_count %>
+             </span>
+          </p>
         </div>
-         <div class="card-footer text-muted">
-          <span class="label label-info total-count">
-            <%= number_to_currency item.price %>
-           </span>
-         <%= link_to 'Order Now', new_order_path(id: item.id), class: 'btn btn-primary' %>
-        </div>
+           <div class="card-footer text-muted">
+            <span class="label label-info total-count">
+              <%= number_to_currency food_item.price %>
+             </span>
+           <%= link_to 'Order Now', new_order_path(id: food_item.id), class: 'btn btn-primary' %>
+          </div>
     </div>
-
-
+      <% end %>
+  </div>
 <% end %>
+</div>
+
+
 
 <script>
 $('.dropdown-toggle').dropdown()
