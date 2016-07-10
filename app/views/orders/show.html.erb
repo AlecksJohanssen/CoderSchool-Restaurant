@@ -8,11 +8,25 @@
   <div class="card-block">
     <h4 class="card-title" style="text-align:center">   <strong>Username:</strong> <%= @order.username %></h4>
   </div>
+
   <div class="card-block">
     <p class="card-text" style="text-align:center">  <strong>Phone Number:</strong><%= @order.phone_number %></p>
     <p class="card-text" style="text-align:center">  <strong>Address:</strong><%= @order.address %></p>
     <p class="card-text" style="text-align:center"><%= @selected_food_item.name %></p>
-
+    <p class="card-text" style="text-align:center"><%= @selected_food_item.description %></p>
+    <p class="card-text" style="text-align:center"><span class="label label-info total-count">
+              <%= number_to_currency @selected_food_item.price + 20000 %>
+             </span>
+       <span class="label label-info total-count">
+              Plus 20.000 shipping tax
+             </span></p>
+    <p class="card-text" style="text-align:center"><span class="label label-info total-count">
+      <% if @selected_food_item.created_at == @selected_food_item.updated_at %>
+             Order created at :<%= @selected_food_item.created_at %>
+      <% else %>
+            Order updated at :<%= @selected_food_item.updated_at %>
+             </span>
+      <%end %>
   </div>
 </div>
 
