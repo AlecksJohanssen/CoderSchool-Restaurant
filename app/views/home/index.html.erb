@@ -142,7 +142,8 @@
     </div>
 </div>
 
-<script>var jumboHeight = $('.jumbotron').outerHeight();
+<script>
+  var jumboHeight = $('.jumbotron').outerHeight();
 function parallax(){
     var scrolled = $(window).scrollTop();
     $('.bg').css('height', (jumboHeight-scrolled) + 'px');
@@ -150,4 +151,5 @@ function parallax(){
 
 $(window).scroll(function(e){
     parallax();
-});</script>
+});
+</script>
