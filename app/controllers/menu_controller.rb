@@ -1,7 +1,7 @@
 class MenuController < ApplicationController
   def index
     @food_items = FoodItem.order('view_count ASC')
-    @sections = %w(Breakfast Lunch Dinner)
+    @sections = %w(Breakfast Lunch Dinner Drinks)
     @food_items = FoodItem.filter_by_section(params[:section]).order("#{params[:sort_param]} ")
 
     @cuisines = %w(Noodles Rice Soup)
