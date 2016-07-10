@@ -22,9 +22,9 @@
              </span></p>
     <p class="card-text" style="text-align:center"><span class="label label-info total-count">
       <% if @selected_food_item.created_at == @selected_food_item.updated_at %>
-             Order created at :<%= @selected_food_item.created_at %>
+      <%= @selected_food_item.created_at.strftime("Created on: %d %b %y at %I:%M%p") %>
       <% else %>
-            Order updated at :<%= @selected_food_item.updated_at %>
+      <%= @selected_food_item.updated_at.strftime("Update on: %d %b %y at %I:%M%p") %>
              </span>
       <%end %>
   </div>
