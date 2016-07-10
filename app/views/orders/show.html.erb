@@ -7,11 +7,11 @@
 <div class="card">
   <div class="card-block">
     <h4 class="card-title" style="text-align:center">   <strong>Username:</strong> <%= @order.username %></h4>
-  </div>
-
-  <div class="card-block">
     <p class="card-text" style="text-align:center">  <strong>Phone Number:</strong><%= @order.phone_number %></p>
     <p class="card-text" style="text-align:center">  <strong>Address:</strong><%= @order.address %></p>
+  </div>
+  <%= image_tag @selected_food_item.image_url_or_auto,size: "600x400"%>
+  <div class="card-block">
     <p class="card-text" style="text-align:center"><%= @selected_food_item.name %></p>
     <p class="card-text" style="text-align:center"><%= @selected_food_item.description %></p>
     <p class="card-text" style="text-align:center"><span class="label label-info total-count">
