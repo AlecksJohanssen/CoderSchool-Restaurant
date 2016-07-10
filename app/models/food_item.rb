@@ -1,7 +1,6 @@
 class FoodItem < ApplicationRecord
   has_many :order_food_items
   has_many :impressions, :as=>:impressionable
-ratyrate_rateable 'visual_effects', 'original_score', 'director', 'custome_design'
   def image_url_or_auto
     if image_url.present?
       image_url

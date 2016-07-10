@@ -1,4 +1,4 @@
-<h1>Menu#index</h1>
+<h1>Menu</h1>
 <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track" => false %>
 <form class="form-inline">
   <div class="form-group">
@@ -35,22 +35,29 @@
     </form>
     </div>
 </form>
-
 <% @food_items.each do |item|%>
-<div class="card" style="margin-top:50px">
-  <div class="card-block">
-    <%= link_to item.name, food_item_path(item), class: 'btn btn-default' %>
-    <%= number_to_currency item.price%>
-    <%= item.cuisine %>
-    <span class="label label-info total-count">
-      View Counts:<%= item.impressions_count %>
+<div class="card-deck-wrapper">
+  <div class="card-deck">
+    <div class="card">
+      <%= image_tag item.image_url_or_auto%>
+      <div class="card-block">
+        <h4 class="card-title"><%= link_to item.name, food_item_path(item)%></h4>
+        <p class="card-text"><%= item.description %></p>
+        <p class="card-text">
+          <span class="label label-info total-count">
+            View Counts:<%= item.impressions_count %>
            </span>
-    <%= link_to 'Order Now', new_order_path(id: item.id), class: 'btn btn-primary' %>
-  </div>
-  <div class="card-block">
-    <%= image_tag item.image_url_or_auto%>
-  </div>
-</div>
+        </p>
+        </div>
+         <div class="card-footer text-muted">
+          <span class="label label-info total-count">
+            <%= number_to_currency item.price %>
+           </span>
+         <%= link_to 'Order Now', new_order_path(id: item.id), class: 'btn btn-primary' %>
+        </div>
+
+      </div>
+
 <% end %>
 
 <script>
